@@ -1,6 +1,5 @@
+// app/login/page.tsx
 "use client"
-
-import type React from "react"
 
 import { useState } from "react"
 import { Eye, EyeOff, User, Lock } from "lucide-react"
@@ -14,105 +13,97 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [tipoUsuario, setTipoUsuario] = useState("municipe")
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Aqui seria implementada a lógica de autenticação
-    console.log({ email, password, tipoUsuario })
-    
-    // Simulação de redirecionamento baseado no tipo de usuário
-    if (tipoUsuario === "vereador") {
-      window.location.href = "/dashboard-vereador"
-    } else {
-      window.location.href = "/"
-    }
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        {/* Logo/Header */}
+        {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-blue-600 mb-2">CidadãoAtivo</h1>
-          <p className="text-gray-600">Conectando cidadãos e vereadores</p>
+          <h1 className="text-3xl font-bold text-blue-700">Cidadão Ativo</h1>
+          <p className="text-gray-600">Acompanhe, apoie e participe das soluções da sua cidade</p>
         </div>
 
-        <Card>
-          <CardHeader className="text-center">
-            <CardTitle>Entrar na Plataforma</CardTitle>
-            <CardDescription>
-              Acesse sua conta para participar da democracia local
-            </CardDescription>
+        <Card className="shadow-xl">
+          <CardHeader>
+            <CardTitle className="text-2xl">Acessar conta</CardTitle>
+            <CardDescription>Entre com seu e-mail e senha ou crie uma conta</CardDescription>
           </CardHeader>
+
           <CardContent>
-            <Tabs value={tipoUsuario} onValueChange={setTipoUsuario} className="mb-6">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="municipe">Munícipe</TabsTrigger>
-                <TabsTrigger value="vereador">Vereador</TabsTrigger>
+            <Tabs defaultValue="login" className="w-full">
+              <TabsList className="grid grid-cols-2">
+                <TabsTrigger value="login">Entrar</TabsTrigger>
+                <TabsTrigger value="signup">Criar conta</TabsTrigger>
               </TabsList>
-              
-              <TabsContent value="municipe" className="mt-4">
-                <div className="text-center p-4 bg-blue-50 rounded-lg">
-                  <User className="w-8 h-8 mx-auto mb-2 text-blue-600" />
-                  <p className="text-sm text-blue-800">
-                    Como munícipe, você pode criar solicitações, apoiar causas e acompanhar o progresso
+
+              {/* LOGIN */}
+              <TabsContent value="login" className="mt-6">
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="email" className="text-sm">E-mail</Label>
+                    <div className="relative mt-1">
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Input id="email" type="email" placeholder="seu@email.com" className="pl-9" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="password" className="text-sm">Senha</Label>
+                    <div className="relative mt-1">
+                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="••••••••"
+                        className="pl-9 pr-10"
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-0"
+                        onClick={() => setShowPassword((v) => !v)}
+                        aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+                      >
+                        {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="remember" />
+                    <Label htmlFor="remember" className="text-sm">Lembrar de mim</Label>
+                  </div>
+
+                  <Button className="w-full">Entrar</Button>
+
+                  <p className="text-xs text-center text-gray-500">
+                    Ao continuar, você concorda com os Termos de Uso e a Política de Privacidade.
                   </p>
                 </div>
               </TabsContent>
-              
-              <TabsContent value="vereador" className="mt-4">
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <Lock className="w-8 h-8 mx-auto mb-2 text-green-600" />
-                  <p className="text-sm text-green-800">
-                    Como vereador, você pode assumir solicitações, gerenciar demandas e prestar contas
-                  </p>
+
+              {/* SIGNUP */}
+              <TabsContent value="signup" className="mt-6">
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="name" className="text-sm">Nome completo</Label>
+                    <Input id="name" placeholder="Seu nome" />
+                  </div>
+                  <div>
+                    <Label htmlFor="signup-email" className="text-sm">E-mail</Label>
+                    <Input id="signup-email" type="email" placeholder="seu@email.com" />
+                  </div>
+                  <div>
+                    <Label htmlFor="signup-password" className="text-sm">Senha</Label>
+                    <Input id="signup-password" type="password" placeholder="Crie uma senha" />
+                  </div>
+                  <Button className="w-full">Criar conta</Button>
                 </div>
               </TabsContent>
             </Tabs>
-
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div>
-                <Label htmlFor="email">E-mail</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="seu@email.com"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="password">Senha</Label>
-                <div className="relative">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Sua senha"
-                    required
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-0 top-0 h-full px-3"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="w-4 h-4" />
-                    ) : (
-                      <Eye className="w-4 h-4" />
-                    )}
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <Checkbox id="remember" />
-                <Label htmlFor="remember" className="text-sm">\
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  )
+}
