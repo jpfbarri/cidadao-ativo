@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "CidadãoAtivo - Transparência Municipal",
   description:
     "Plataforma de engajamento cívico e transparência dos vereadores. Conecte-se com seus representantes eleitos.",
-  generator: "v0.app",
+  generator: "CidadãoAtivo",
   icons: {
     icon: [
       {

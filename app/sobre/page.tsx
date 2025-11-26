@@ -1,44 +1,23 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Target, Award, Heart, ArrowLeft } from "lucide-react"
+import { AuthHeader } from "@/components/auth-header"
 
 export default function SobrePage() {
   return (
     <div className="min-h-screen bg-neutral-50">
-      {/* Header */}
-      <header className="bg-white border-b border-neutral-200 px-4 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-primary">
-            CidadãoAtivo
-          </Link>
-          <nav className="flex items-center gap-6">
-            <Link href="/" className="text-sm text-neutral-600 hover:text-primary">
-              Início
-            </Link>
-            <Link href="/transparencia" className="text-sm text-neutral-600 hover:text-primary">
-              Transparência
-            </Link>
-            <Link href="/sobre" className="text-sm font-medium text-primary">
-              Sobre
-            </Link>
-            <Button size="sm" asChild>
-              <Link href="/nova-solicitacao">+ Nova Solicitação</Link>
-            </Button>
-            <Button variant="ghost" size="sm">
-              Entrar
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <AuthHeader />
 
       {/* Hero Section */}
       <section className="bg-primary text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4 text-balance">Sobre o CidadãoAtivo</h1>
-          <p className="text-xl text-primary-foreground/90">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
+          <p className="text-xl text-primary-foreground/90 text-balance">
+            Uma plataforma que conecta cidadãos aos seus representantes, promovendo transparência e participação ativa
+            na gestão pública municipal.
           </p>
         </div>
       </section>
@@ -60,14 +39,14 @@ export default function SobrePage() {
           <Card>
             <CardContent className="pt-6">
               <p className="text-neutral-700 text-lg leading-relaxed mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.
+                O CidadãoAtivo é uma plataforma digital criada para fortalecer a democracia participativa em nível
+                municipal. Acreditamos que a transparência e o engajamento cidadão são fundamentais para construir
+                cidades mais justas, eficientes e responsivas às necessidades da população.
               </p>
               <p className="text-neutral-700 text-lg leading-relaxed">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.
+                Nossa missão é facilitar a comunicação entre cidadãos e vereadores, permitindo que todos acompanhem o
+                desempenho dos representantes eleitos, relatem problemas urbanos e participem ativamente da construção
+                de soluções para suas comunidades.
               </p>
             </CardContent>
           </Card>
@@ -86,8 +65,8 @@ export default function SobrePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-neutral-600 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua.
+                  Todas as solicitações e o desempenho dos vereadores são públicos e acessíveis. Acreditamos que a
+                  transparência é a base para a confiança entre governo e cidadãos.
                 </p>
               </CardContent>
             </Card>
@@ -101,8 +80,8 @@ export default function SobrePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-neutral-600 leading-relaxed">
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.
+                  Empoderamos os cidadãos a relatar problemas, acompanhar soluções e cobrar resultados dos seus
+                  representantes de forma simples e acessível.
                 </p>
               </CardContent>
             </Card>
@@ -116,7 +95,8 @@ export default function SobrePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-neutral-600 leading-relaxed">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Promovemos a prestação de contas por meio de métricas claras que mostram quantas solicitações cada
+                  vereador assumiu e resolveu, e em quanto tempo.
                 </p>
               </CardContent>
             </Card>
@@ -130,8 +110,8 @@ export default function SobrePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-neutral-600 leading-relaxed">
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                  laborum.
+                  Trabalhamos para que cada solicitação seja tratada com seriedade, conectando demandas reais da
+                  população com ações concretas dos gestores públicos.
                 </p>
               </CardContent>
             </Card>
@@ -149,10 +129,11 @@ export default function SobrePage() {
                     1
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-neutral-900 mb-2">Lorem Ipsum Dolor</h3>
+                    <h3 className="font-semibold text-lg text-neutral-900 mb-2">Cidadão Relata o Problema</h3>
                     <p className="text-neutral-600 leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
+                      Qualquer cidadão pode criar uma solicitação descrevendo problemas urbanos como buracos nas ruas,
+                      falta de iluminação, necessidade de melhorias em áreas públicas e muito mais. A solicitação inclui
+                      localização, categoria e descrição detalhada.
                     </p>
                   </div>
                 </div>
@@ -162,10 +143,11 @@ export default function SobrePage() {
                     2
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-neutral-900 mb-2">Consectetur Adipiscing</h3>
+                    <h3 className="font-semibold text-lg text-neutral-900 mb-2">Vereador Assume a Demanda</h3>
                     <p className="text-neutral-600 leading-relaxed">
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat.
+                      Os vereadores acessam o dashboard com todas as solicitações abertas e podem assumir aquelas que
+                      estão dentro de sua área de atuação ou região. Ao assumir, o vereador se compromete publicamente a
+                      trabalhar naquela demanda.
                     </p>
                   </div>
                 </div>
@@ -175,10 +157,11 @@ export default function SobrePage() {
                     3
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-neutral-900 mb-2">Duis Aute Irure</h3>
+                    <h3 className="font-semibold text-lg text-neutral-900 mb-2">Acompanhamento e Resolução</h3>
                     <p className="text-neutral-600 leading-relaxed">
-                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                      pariatur.
+                      O cidadão recebe atualizações sobre o status da sua solicitação (aberta, em andamento, resolvida).
+                      Todo o processo é transparente e as estatísticas de desempenho de cada vereador ficam disponíveis
+                      publicamente na página de transparência.
                     </p>
                   </div>
                 </div>
@@ -190,9 +173,9 @@ export default function SobrePage() {
         {/* CTA Section */}
         <section className="bg-primary/5 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold text-neutral-900 mb-4">Pronto para Participar?</h2>
-          <p className="text-neutral-600 mb-6 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
+          <p className="text-neutral-600 mb-6 max-w-2xl mx-auto text-balance">
+            Faça parte da mudança que você quer ver na sua cidade. Relate problemas, acompanhe soluções e ajude a
+            construir uma gestão pública mais transparente e eficiente.
           </p>
           <Button size="lg" asChild>
             <Link href="/nova-solicitacao">Criar Nova Solicitação</Link>
