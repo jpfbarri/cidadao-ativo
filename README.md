@@ -19,7 +19,8 @@ A interface abrirá normalmente em http://localhost:5173
 ## Instruções de Backend
 
 1. **Instalar dependências::**
-
+   
+cd backend
 Instale tudo usando o comando pip install -r requirements.txt
 
 2. **Inicializar o banco de dados::**
